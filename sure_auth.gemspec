@@ -1,5 +1,5 @@
-$:.push File.expand_path("../lib", __FILE__)
-$:.push File.expand_path("../app/controllers", __FILE__)
+lib = File.expand_path('../lib/', __FILE__)
+$:.unshift lib unless $:.include?(lib)
 
 # Maintain your gem's version:
 require "sure_auth/version"
