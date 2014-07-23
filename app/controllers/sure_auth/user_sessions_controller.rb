@@ -22,7 +22,7 @@ module SureAuth
 
 		def destroy
 			reset_session
-			redirect_to "#{ENV['AUTH_PROVIDER_URL']}/logout" # provider now removes single sign on cookie
+			redirect_to "#{ENV['AUTH_PROVIDER_URL']}"
 		end
 	end
 end

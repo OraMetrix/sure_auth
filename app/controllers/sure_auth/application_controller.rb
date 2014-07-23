@@ -1,13 +1,11 @@
 module SureAuth
 	class ApplicationController < ActionController::Base
-		before_action :check_cookie
-
 		protect_from_forgery
 
 		# use this method as a before_action in
 		# your client controllers to secure them
 		def login_required
-			not_authorized unless valid_cookie
+			not_authorized unless session[:user_id]
 		end
 
 		def not_authorized
@@ -17,19 +15,5 @@ module SureAuth
 				format.json { head :unauthorized }
 			end
 		end
-
-		private
-
-			# use a cookie to check if a user
-			# has signed out on another related app
-			def check_cookie
-				reset_session unless valid_cookie
-			end
-
-			def valid_cookie
-				cookies['sure_auth'].present? &&
-				session[:user_id].present? &&
-				cookies['sure_auth'].to_s == session[:user_id].to_s
-			end
 	end
 end
