@@ -12,9 +12,9 @@ class OmniAuth::Strategies::Sure < OmniAuth::Strategies::OAuth2
 	info do 
 		{
 			id: raw_user_info['id'],
-			name: raw_user_info['username'],
+			username: raw_user_info['username'],
 			orametrix?: raw_user_info['orametrix?'],
-			practices: raw_user_info['practices']
+			practice_roles: raw_user_info['practice_roles']
 		}
 	end
 

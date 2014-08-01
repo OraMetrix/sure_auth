@@ -6,10 +6,11 @@ module SureAuth
 		def create
 			omniauth = env['omniauth.auth']
 
-			session[:user] = omniauth['info']
+      session[:user] = omniauth['info']
+			session[:username] = omniauth['info']['username']
 			session[:user_id] = omniauth['info']['id']
-			session[:practices] = omniauth['info']['practices']
 			session[:orametrix?] = omniauth['info']['orametrix?']
+			session[:practice_roles] = omniauth['info']['practices_roles']
 
 			redirect_to env['omniauth.origin'] || root_path
 		end
