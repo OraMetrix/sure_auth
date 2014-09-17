@@ -9,12 +9,12 @@ class OmniAuth::Strategies::Sure < OmniAuth::Strategies::OAuth2
 		access_token_path: '/oath/token'
 	}
 
-	info do 
+	info do
 		{
 			id: raw_user_info['id'],
 			username: raw_user_info['username'],
 			orametrix?: raw_user_info['orametrix?'],
-			practice_roles: raw_user_info['practice_roles']
+			practice_roles: raw_user_info['practices_roles']
 		}
 	end
 
