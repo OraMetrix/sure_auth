@@ -7,10 +7,7 @@ module SureAuth
       omniauth = env['omniauth.auth']
 
       session[:user] = omniauth['info']
-      session[:username] = omniauth['info']['username']
-      session[:user_id] = omniauth['info']['id']
-      session[:orametrix?] = omniauth['info']['orametrix?']
-      session[:practice_roles] = omniauth['info']['practice_roles']
+      session[:user][:practice_roles] = {} if session[:user][:orametrix?] # Could be a lot and overflow the cookie...
 
       redirect_to env['omniauth.origin'] || root_path
     end

@@ -5,7 +5,7 @@ module SureAuth
     # use this method as a before_action in
     # your client controllers to secure them
     def login_required
-      not_authorized unless session[:user_id]
+      not_authorized unless session[:user] && session[:user][:id]
     end
 
     def not_authorized
