@@ -9,6 +9,8 @@ class OmniAuth::Strategies::Sure < OmniAuth::Strategies::OAuth2
     access_token_path: '/oath/token'
   }
 
+  uid { raw_user_info['id'] }
+
   info do
     {
       id: raw_user_info['id'],
@@ -16,6 +18,10 @@ class OmniAuth::Strategies::Sure < OmniAuth::Strategies::OAuth2
       orametrix?: raw_user_info['orametrix?'],
       practice_roles: raw_user_info['practices_roles']
     }
+  end
+
+  extra do
+    { raw_user_info: raw_user_info }
   end
 
   # after successful auth, get data from provider app
