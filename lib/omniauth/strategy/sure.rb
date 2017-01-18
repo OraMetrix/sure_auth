@@ -3,10 +3,12 @@ require 'omniauth-oauth2'
 class OmniAuth::Strategies::Sure < OmniAuth::Strategies::OAuth2
   option :name, 'sure'
 
+  ENV['AUTH_PROVIDER_URL'] ||= 'https://login.suresmile.com'
+
   option :client_options, {
     site: ENV['AUTH_PROVIDER_URL'],
     authorize_path: '/oauth/authorize',
-    access_token_path: '/oath/token'
+    access_token_path: '/oauth/token'
   }
 
   uid { raw_user_info['id'] }
