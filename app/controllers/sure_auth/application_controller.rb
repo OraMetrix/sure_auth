@@ -1,5 +1,5 @@
 module SureAuth
-  class ApplicationController < ActionController::Base
+  class ApplicationController < ::ActionController::Base
     protect_from_forgery
 
     # use this method as a before_action in
