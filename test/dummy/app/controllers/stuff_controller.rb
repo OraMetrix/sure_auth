@@ -1,9 +1,7 @@
 class StuffController < ApplicationController
-  	before_filter :login_required, only: :private
+  before_action :login_required, only: :private
 
-  def private
-  end
+  def private; end
 
-  def public
-  end
+  def public; end
 end
